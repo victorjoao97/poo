@@ -7,35 +7,39 @@ namespace ProjetoAgenciaBancaria
         /**
          * declarar os atributos da classe
          * */
-        public string numero;
-        public double saldo, limite;
+
+        public string Numero { get; set; }
+        public double Saldo { get; set; }
+        public double Limite { get; set; }
+        internal Agencia Agencia { get; set; }
 
         // Construtor
 
         public Conta()
         {
-            numero = null;
-            saldo = 0;
-            limite = 0;
+            Numero = null;
+            Saldo = 0;
+            Limite = 0;
+            Agencia = new Agencia();
         }
 
         // implementar os metodos
         public void Saca(double valor)
         {
-            if (valor <= (saldo + limite))
-                saldo -= valor;
+            if (valor <= (Saldo + Limite))
+                Saldo -= valor;
             else
                 Console.WriteLine("Saldo insuficiente");
         }
 
         public void Deposita(double valor)
         {
-            saldo += valor;
+            Saldo += valor;
         }
 
         public string VerSaldo()
         {
-            return $"No. da Conta: {numero}\n Saldo R$ {saldo}\nLimite R$ {limite}\nTotal R$ {saldo + limite}";
+            return $"No. da Conta: {Numero}\n Saldo R$ {Saldo}\nLimite R$ {Limite}\nTotal R$ {Saldo + Limite}\n----- Dados da sua agencia---- -\nNumero: { Agencia.Numero}\nNome:{Agencia.Nome}\nEndereço: {Agencia.Endereco}";
         }
     }
 }

@@ -9,17 +9,27 @@ namespace ProjetoAgenciaBancaria
             int opcao = 0;
             // Instaciar a classe Conta criando um objeto
             Conta minhaConta = new Conta();
+            Agencia minhaAgencia = new Agencia();
 
             try
             {
                 Console.WriteLine("\nDigite o numero da Conta: ");
-                minhaConta.numero = Console.ReadLine();
+                minhaConta.Numero = Console.ReadLine();
                 Console.WriteLine("Digite o saldo inicial: ");
-                minhaConta.saldo = Convert.ToDouble(Console.ReadLine());
+                minhaConta.Saldo = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine("Digite o limite inicial: ");
-                minhaConta.limite = Convert.ToDouble(Console.ReadLine());
+                minhaConta.Limite = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("Digite o nome da Agencia: ");
+                minhaAgencia.Nome = Console.ReadLine();
+                Console.Write("Digite o numero da agencia: ");
+                minhaAgencia.Numero = Console.ReadLine();
+                Console.Write("Digite o endereco da agencia: ");
+                minhaAgencia.Endereco = Console.ReadLine();
+
+                minhaConta.Agencia = minhaAgencia;
             }
-            catch (FormatException e)
+            catch (FormatException)
             {
                 Erros("Digite um número válido");
             }
@@ -30,9 +40,9 @@ namespace ProjetoAgenciaBancaria
 
             do
             {
-                Console.WriteLine("\n-------Menu-------");
+                Console.WriteLine("\n\n-------Menu-------");
                 Console.WriteLine("1 - Sacar\n2 - Depositar\n3 - Ver Saldo\n4 - Sair do programa");
-                Console.Write("Digite sua opção: ");
+                Console.Write("\nDigite sua opção: \n");
                 try
                 {
                     opcao = Convert.ToInt32(Console.ReadLine());
@@ -60,7 +70,7 @@ namespace ProjetoAgenciaBancaria
                             break;
                     }
                 }
-                catch (FormatException e)
+                catch (FormatException)
                 {
                     Erros("Digite um número válido");
                 }
